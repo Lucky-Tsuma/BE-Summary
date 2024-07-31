@@ -20,5 +20,5 @@ Other technologies and protocols used to enable communication and data exchange 
 
 #### Terminologies
 
-. _Packet:_ A small unit of data that is transmitted over the internet.
-. _Router:_ A ddevice that directs packets between different netorks.
+-   _Packet:_ A small unit of data that is transmitted over the internet.
+-   _Router:_ A ddevice that directs packets between different netorks.
