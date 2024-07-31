@@ -2,9 +2,9 @@
 
 Backend developer road map [guide here](https://roadmap.sh/backend)
 
-**Internet:** global network of computers connected to each other which communicate through a standardized set of protocols. Developed in the late 1960s by the United States Department of Defense as a means of creating a decentralized communication network that could withstand a nuclear attack.
+### 1) HOW THE INTERNET WORKS
 
-### HOW THE INTERNET WORKS
+**Internet:** global network of computers connected to each other which communicate through a standardized set of protocols. Developed in the late 1960s by the United States Department of Defense as a means of creating a decentralized communication network that could withstand a nuclear attack.
 
 When you send data over the internet, it is broken up into small _packets_ that are sent from your device to a router. The router examines the packet and forwards it to the next router in the path towards its destination.
 To ensure that packets are sent and received correctly, the internet uses a variety of protocols e.g:
@@ -17,3 +17,5 @@ Other technologies and protocols used to enable communication and data exchange 
 -   Domain Name System (DNS)
 -   Hypertext Transfer Protocol (HTTP)
 -   Secure Sockets Layer/Transport Layer Security (SSL/TLS) protocol.
+
+#### Terminologies
