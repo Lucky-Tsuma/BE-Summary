@@ -22,3 +22,9 @@ Other technologies and protocols used to enable communication and data exchange 
 
 -   _Packet:_ A small unit of data that is transmitted over the internet.
 -   _Router:_ A ddevice that directs packets between different netorks.
+-   _IP Address:_ A unique identifier for each device on a network, used to route data to the correct destination.
+-   _Domain Name:_ Human-readable name used to identify a website. Example: google.com.
+-   _DNS:_ Domain Name System. For translating domain names into IP addresses.
+-   _HTTP:_ Hypertext Transfer Protocol. Used to transfer data between a client ( e.g web browser) and a server (e.g website).
+-   _HTTPS:_ An encrypted version of HTTP.
+-   _SSL/TLS:_ The Secure Sockets Layer and Transport Layer Security protocols are used to provide secure communication over the internet.
