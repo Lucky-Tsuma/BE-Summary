@@ -20,7 +20,7 @@ Other technologies and protocols used to enable communication and data exchange 
 
 #### Terminologies
 
--   _Packet:_ A small unit of data that is transmitted over the internet.
+-   _Packet:_ A small unit of data that is transmitted over the internet. A packet has two parts, the **header** contains information that helps the packet get to its destination, including the length of the packet, its source and destination, and a checksum value that helps the recipient detect if a packet was damaged in transit. After the header comes the **actual data.**
 -   _Router:_ A ddevice that directs packets between different netorks.
 -   _IP Address:_ A unique identifier for each device on a network, used to route data to the correct destination.
 -   _Domain Name:_ Human-readable name used to identify a website. Example: google.com.
@@ -83,3 +83,8 @@ Key concepts to understand while using SSL/TLS:
 -   _Artificial Intelligence (AI):_ technologies such as machine learning and natural language processing.
 -   _Blockchain:_ distributed ledger technology that enables secure, decentralized transactions.
 -   _Edge computing:_ refers to the processing and storage of data at the edge of the network, rather than in centralized data centers.
+
+#### Types of domain names
+
+1. **generic top-level domains (gTLDs):** such as .com, .edu, .org, and .gov. Authority over these domains is usually delegated to private organizations.
+2. **country-code top-level domains (ccTLDs):** Each country in the world has its own 2-letter code. For example, the ccTLD for the United States is .us, Great Britain’s is .uk, and China’s is .cn. These domains are administered by authorities in each country.
