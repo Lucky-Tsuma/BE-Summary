@@ -65,3 +65,13 @@ Few key concepts to understand when building applicaitons with TCP/IP:
 -   Sockets: a combination of an IP address and a port number, representing a specific endpoint for communication. Used to establish connections between devices and transfer data between applications. Each language has its own way of representing sockets.
 -   Connections: established between two sockets when two devices want to communicate with each other. During the process, the devices negotiate various parameters e.g the maximum segment size and window size, which determine how data will be transmitted over the connection.
 -   Data transfer: happens between applications running on each device once a connection is established. Data is transmitted in segments, with each segment containing a sequence number and other metadata to ensure reliable delivery.
+
+#### Securing Internet Communication with SSL/TLS
+
+SSL/TLS is used to encrypt data being transmitted over the internet. Used to provide secure connections for applications such as web browsers, email clients, and file transfer programs.
+
+Key concepts to understand while using SSL/TLS:
+
+-   Certificates: SSL/TLS certificates are _used to establish trust_ between the client and server. Contain _information about the identity of the server._ Signed by a trusted third party (a Certificate Authority) to verify their authenticity. Trust in a certificate relies in the trust of the CA that issued it. Browsers and OS(s) typically come pre-installed with a list of trusted CAs. Examples of CAs: Digicert, Comodo, GlobalSign, Thawte, Let's Encrypt (free).
+-   Handshake: During the SSL/TLS handshake process, the client and server _exchange information to negotiate the encryption algorithm and other parameters for the secure connection._
+-   Encryption: Once the secure connection is established, data is encrypted using the agreed-upon algorithm and can be transmitted securely between the client and server.
