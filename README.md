@@ -56,3 +56,12 @@ HTTPS (HTTP Secure)
 When you visit a website, your web browser sends an HTTP request to the server, asking for the webpage or other resource you’ve requested. The server then sends an HTTP response back to the client, containing the requested data.
 
 HTTPS encrypts the data being transmitted between the client and server using SSL/TLS (Secure Sockets Layer/Transport Layer Security) encryption.
+
+#### Building applications with TCP/IP
+
+Few key concepts to understand when building applicaitons with TCP/IP:
+
+-   Ports: used to identify the application/service running on a device. Each application/service is assigned a unique port number, allowing data to be sent to the correct destination.
+-   Sockets: a combination of an IP address and a port number, representing a specific endpoint for communication. Used to establish connections between devices and transfer data between applications. Each language has its own way of representing sockets.
+-   Connections: established between two sockets when two devices want to communicate with each other. During the process, the devices negotiate various parameters e.g the maximum segment size and window size, which determine how data will be transmitted over the connection.
+-   Data transfer: happens between applications running on each device once a connection is established. Data is transmitted in segments, with each segment containing a sequence number and other metadata to ensure reliable delivery.
