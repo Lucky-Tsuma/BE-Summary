@@ -28,3 +28,31 @@ Other technologies and protocols used to enable communication and data exchange 
 -   _HTTP:_ Hypertext Transfer Protocol. Used to transfer data between a client ( e.g web browser) and a server (e.g website).
 -   _HTTPS:_ An encrypted version of HTTP.
 -   _SSL/TLS:_ The Secure Sockets Layer and Transport Layer Security protocols are used to provide secure communication over the internet.
+
+#### The role of protocols in internet
+
+**Protocol**: A set of rules and standards that define how information is exchanged between devices and systems.
+
+-   **IP** is responsible for _routing packets of data to their correct destination._
+-   **TCP** and **UDP** ensure that _packets are transmitted reliably and efficiently._
+-   **DNS** is used to _translate domain names into IP addresses._
+-   **HTTP** is used to _transfer data between clients and servers._
+
+    Using standardized protocols allow devices and systems from different manufacturers and vendors to communicate with each other seamlessly.
+
+#### IP Addresses and Domain Names
+
+IP addresses are typically represented as a series of four numbers separated by periods, such as “192.168.1.1”.
+Domain names are human-readable names used to identify websites and other internet resources.
+
+When you enter a domain name into your web browser, your computer sends a DNS query to a DNS server, which returns the corresponding IP address.
+The IP address is then used to connect to the website or other resource you’ve requested.
+
+#### HTTP and HTTPS
+
+HTTP (Hypertext Transfer Protocol)
+HTTPS (HTTP Secure)
+
+When you visit a website, your web browser sends an HTTP request to the server, asking for the webpage or other resource you’ve requested. The server then sends an HTTP response back to the client, containing the requested data.
+
+HTTPS encrypts the data being transmitted between the client and server using SSL/TLS (Secure Sockets Layer/Transport Layer Security) encryption.
