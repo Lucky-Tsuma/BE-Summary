@@ -75,3 +75,11 @@ Key concepts to understand while using SSL/TLS:
 -   Certificates: SSL/TLS certificates are _used to establish trust_ between the client and server. Contain _information about the identity of the server._ Signed by a trusted third party (a Certificate Authority) to verify their authenticity. Trust in a certificate relies in the trust of the CA that issued it. Browsers and OS(s) typically come pre-installed with a list of trusted CAs. Examples of CAs: Digicert, Comodo, GlobalSign, Thawte, Let's Encrypt (free).
 -   Handshake: During the SSL/TLS handshake process, the client and server _exchange information to negotiate the encryption algorithm and other parameters for the secure connection._
 -   Encryption: Once the secure connection is established, data is encrypted using the agreed-upon algorithm and can be transmitted securely between the client and server.
+
+#### Emerging trends and technology
+
+-   _5G:_ latest generation of mobile network technology, offering faster speeds, lower latency, and greater capacity than previous generations.
+-   _Internet of Things (IoT):_ network of physical devices, vehicles, home appliances, and other objects that are connected to the internet and can exchange data.
+-   _Artificial Intelligence (AI):_ technologies such as machine learning and natural language processing.
+-   _Blockchain:_ distributed ledger technology that enables secure, decentralized transactions.
+-   _Edge computing:_ refers to the processing and storage of data at the edge of the network, rather than in centralized data centers.
