@@ -126,4 +126,5 @@ Thus:
 -   **docker run -d <image_name>:** starts a container in detach mode. Container runs in the background leaving the terminal free fpr other tasks. Retuns the container id.
 -   **docker stop <container_id>:** stops a docker container
 -   **docker start <container_id>:** starts a docker container
--   **docker ps -a:** shows all containers. Those that are running and those that are not.
+-   **docker ps -a:** shows all containers. Those that are running and those that are not
+-   **docker pull:** pulls docker image from repository to local
