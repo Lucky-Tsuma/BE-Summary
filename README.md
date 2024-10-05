@@ -90,28 +90,29 @@ Key concepts to understand while using SSL/TLS:
 2. **country-code top-level domains (ccTLDs):** Each country in the world has its own 2-letter code. For example, the ccTLD for the United States is .us, Great Britain’s is .uk, and China’s is .cn. These domains are administered by authorities in each country.
 
 ### 2) DOCKER
+
 [Youtube tutorial here](https://www.youtube.com/watch?v=3c-iBn73dDE)
 
--   **Docker:** A platform to build, run and ship applications. 
--   **Container:** An isolated environment for running an application. 
+-   **Docker:** A platform to build, run and ship applications.
+-   **Container:** An isolated environment for running an application.
 
 #### Difference between a docker conainer and a virtual machine
+
 A _virtual machine_ is an abstraction of a physical machine, thus needs a full blown OS. It needs a hypervisor to run e.g Virtualbox, Virtual-Machine, Hyper-v (for windows only). It virtualizes both the application layer and the kernel of an OS. It boots up its own kernel.
 
 A _container_ on the other hand is just a way to package an application with all necessary dependencies and configurations. It virtualizes only the application layer of an OS. It uses the kernel of the host OS.
 
-Thus: 
-    -   A docker image is much smaller that a virtual machine
-    -   Docker containers are much  faster than a virtual machine
-    -   You can run the VM of any OS on any OS host. You cannot do that with a docker image however. e.g a linux docker image will be incompatible with the windows kernel (win 10 and below especially). The way around this is to install _docker toolbox_, making it possible for your host to run different docker images.
+Thus: - A docker image is much smaller that a virtual machine - Docker containers are much faster than a virtual machine - You can run the VM of any OS on any OS host. You cannot do that with a docker image however. e.g a linux docker image will be incompatible with the windows kernel (win 10 and below especially). The way around this is to install _docker toolbox_, making it possible for your host to run different docker images.
 
 #### Difference between docker image and docker container
+
 -   **Docker image:** The actual package (configs, apps etc). The artifact that can be moved around. Images, like repositories are stored on [Docker Hub](https://hub.docker.com/)
 -   **Docker container:** When you pull an image to your local machine and start it. A container is a running environment for an image. Say, a docker image has postgresql, mongo and redis, it will need things such as:
     -   Filesystem: container provides a virtual filesystem
     -   Port binding: containers are port binded, making it possible to talk to applications running inside the container.
 
 #### Docker installation
+
 [Installation guide for ubuntu and ubuntu based distros](https://docs.docker.com/engine/install/ubuntu/#install-using-the-repository)
 
 -   **Docker Engine:** Necessary to run docker containers.
@@ -120,6 +121,7 @@ Thus:
 -   **Docker toolbox:** for environmemts that do not allow running docker natively.
 
 #### Basic docker commands
+
 -   **docker ps:** list running containers
 -   **docker images:** show available images
 -   **docker run <image_name>:** starts a container for an image. Pulls the image from dockerhub if not available locally
@@ -128,3 +130,14 @@ Thus:
 -   **docker start <container_id>:** starts a docker container
 -   **docker ps -a:** shows all containers. Those that are running and those that are not
 -   **docker pull:** pulls docker image from repository to local
+
+#### Container port vs host port
+
+You could for instance have multiple containers of the same application running on the same host e.g different versions of redis. Normally, they will listen on the same port (see when you run `docker ps`), but, take note that this is the container port.
+Your host machine has some ports available as well that you could open for some applications.
+You nned to create _binding_ between your container port and host machine's port.
+On the redis example, you could bind the different versions to different ports on the host machine.
+Use the command below for port binding:
+`docker run -p<host_port>:<container_port> <image_name>`
+In detach mode:
+`docker run -d -p<host_port>:<container_port> <image_name>`
