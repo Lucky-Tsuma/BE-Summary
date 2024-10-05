@@ -141,3 +141,12 @@ Thus: - A docker image is much smaller that a virtual machine - Docker container
     `docker run -p<host_port>:<container_port> <image_name>`
 -   In detach mode:
     `docker run -d -p<host_port>:<container_port> <image_name>`
+
+#### Debugging Containers
+
+-   To view the logs of a running container: <br>
+    `docker logs <container_id>` or `docker logs <container_name>`
+-   To give a container a custom name during runtime:<br>
+    `docker run -d -p<host_port>:<container_port> --name <custom_name> <image_name>`
+-   To access the terminal of a running container:<br>
+    `docker exec -it <container_id> /bin/bash` or `docker exec -it <container_name> /bin/bash`
