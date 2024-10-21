@@ -135,7 +135,7 @@ Thus: - A docker image is much smaller that a virtual machine - Docker container
 
 -   You could for instance have multiple containers of the same application running on the same host e.g different versions of redis. Normally, they will listen on the same port (see when you run `docker ps`), but, take note that this is the container port.
 -   Your host machine has some ports available as well that you could open for some applications.
--   You nned to create _binding_ between your container port and host machine's port.
+-   You need to create _binding_ between your container port and host machine's port.
 -   On the redis example, you could bind the different versions to different ports on the host machine.
 -   Use this command for port binding:
     `docker run -p<host_port>:<container_port> <image_name>`
