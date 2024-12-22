@@ -102,7 +102,10 @@ A _virtual machine_ is an abstraction of a physical machine, thus needs a full b
 
 A _container_ on the other hand is just a way to package an application with all necessary dependencies and configurations. It virtualizes only the application layer of an OS. It uses the kernel of the host OS.
 
-Thus: - A docker image is much smaller that a virtual machine - Docker containers are much faster than a virtual machine - You can run the VM of any OS on any OS host. You cannot do that with a docker image however. e.g a linux docker image will be incompatible with the windows kernel (win 10 and below especially). The way around this is to install _docker toolbox_, making it possible for your host to run different docker images.
+Thus: 
+- A docker image is much smaller that a virtual machine 
+- Docker containers are much faster than a virtual machine 
+- You can run the VM of any OS on any OS host. You cannot do that with a docker image however. e.g a linux docker image will be incompatible with the windows kernel (win 10 and below especially). The way around this is to install _docker toolbox_, making it possible for your host to run different docker images.
 
 #### Difference between docker image and docker container
 
@@ -110,6 +113,7 @@ Thus: - A docker image is much smaller that a virtual machine - Docker container
 -   **Docker container:** When you pull an image to your local machine and start it. A container is a running environment for an image. Say, a docker image has postgresql, mongo and redis, it will need things such as:
     -   Filesystem: container provides a virtual filesystem
     -   Port binding: containers are port binded, making it possible to talk to applications running inside the container.
+    -   By default, there is no data persistence between container restarts.
 
 #### Docker installation
 
@@ -150,3 +154,59 @@ Thus: - A docker image is much smaller that a virtual machine - Docker container
     `docker run -d -p<host_port>:<container_port> --name <custom_name> <image_name>`
 -   To access the terminal of a running container:<br>
     `docker exec -it <container_id> /bin/bash` or `docker exec -it <container_name> /bin/bash`
+
+#### Docker network
+Dcoker containers running in the same network do not need additional information to communicate within themselves
+-   List docker networks: ```docker network ls```
+-   Create a docker network: ```docker network create <network_name>```
+
+#### Docker compose
+-   This is a tool for running multiple docker containers. It is a structured way of containing normal/common docker commands.
+-   It takes care of creating a common network for the containers (containers in the same compose file)
+-   A docker compose file has a *.yaml* extension.
+-   To start containers using docker compose, run this command: ```docker-compose -f <docker_filename.yaml> up```
+-   To stop containers using docker compose, run this command: ```docker-compose -f <docker_filename.yaml> down```
+
+Below is example of a docker-compose file:
+```
+# Specify the version of the Docker Compose file format.
+version: '3'
+
+# Define the services (containers) that will be managed by Docker Compose.
+services:
+  # Define the "mongodb" service.
+  mongodb:
+    # Specify the Docker image to use for this service.
+    image: mongo
+
+    # Map the host's port 27017 to the container's port 27017.
+    # This allows external applications to connect to the MongoDB database.
+    ports:
+      - 27017:27017
+
+    # Define environment variables for the MongoDB container.
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: admin  # Set the MongoDB root username.
+      MONGO_INITDB_ROOT_PASSWORD: password  # Set the MongoDB root password.
+
+  # Define the "mongo-express" service.
+  mongo-express:
+    # Specify the Docker image to use for this service.
+    image: mongo-express
+
+    # Always restart the container if it stops or crashes.
+    restart: always
+
+    # Map the host's port 8081 to the container's port 8081.
+    # This allows accessing the Mongo Express web interface from a browser.
+    ports:
+      - 8081:8081
+
+    # Define environment variables for the Mongo Express container.
+    environment:
+      ME_CONFIG_MONGODB_ADMINUSERNAME: admin  # Use the admin username set for MongoDB.
+      ME_CONFIG_MONGODB_ADMINPASSWORD: password  # Use the admin password set for MongoDB.
+      ME_CONFIG_MONGODB_SERVER: mongodb  # Specify the MongoDB server (name of the "mongodb" service).
+```
+
+This file sets up two containers `mongodb` and `mongo-express`. They work together, with `mongo-express` configured to connect to the `mongodb` service
