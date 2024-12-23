@@ -256,3 +256,60 @@ Once we have created the Dockerfile, the next step is to build a docker image fr
 -   Whenever you make any changes to the `Dockerfile`, you need to rebuild the image. Stop the container, delete it (`docker rm <container_id>`), then delete the image (`docker rmi <image_id>`)
 
 #### Docker Volumes
+-   Docker volumes are used for data persistence in docker.
+-   **How they work:** A folder in physical host file system is *mounted* into the virtual filesystem of docker.
+-   There are three types of docker volumes depending on how they are created:
+
+##### Host volumes
+-   They are created using the command `docker run <path/on/host/directory>:<path/on/container/directory> <image>`
+-   With *Host Volumes*, you decide where on the host file system the reference is made.
+-   Advanteges: 
+    -   Provides direct access to the host Filesystem
+    -   Changes made in the container reflect in the host and vice versa
+-   Disadvantages:
+    -   Not portable across different hosts due to reliance on absolute paths
+    -   Needs careful permission management.
+
+##### Anonymous volumes
+-   Here, you create a volume just by referencing the container directory.
+-   You do not specify which directory on the host should be mounted, docker takes care of that.
+-   For each container, a folder is generated (under /var/lib/docker) that gets mounted.
+-   They are created using the command `docker run -v <path/on/container/directory> <image>`
+-   Anonymous volumes are deleted automatically when the container using them is removed.
+
+##### Named volumes
+-   An improvement on *Anonymous volumes*. In more common use and is what one should use in production.
+-   They are explicitly created and named volumes, allowing easy reuse and management across multiple containers.
+-   Useful for sharing data between containers or persisting important data.
+-   Created using the command `docker run -v <volume_name>:</path/to/container/directory> <image>`
+-   Advanteges:
+    -   Easier to manage using commands like *docker volume ls*, *docker volume rm* and *docker volume inspect*
+    -   Survive container removal unless explicitly deleted.
+
+##### Creating docker volumes using docker-compose
+Here is an example:
+```
+version: "3.9"  # Specify the Docker Compose file version
+
+# Define the services (containers) and volumes
+services:
+  app:
+    image: node:13-alpine  # Use the Node.js Alpine image
+    container_name: my_node_app  # Optional: Name the container
+    working_dir: /usr/src/app  # Set the working directory in the container
+    volumes:
+      - app_data:/usr/src/app/data  # Named volume to persist app data
+      - ./local_folder:/usr/src/app/config  # Bind mount for sharing local files
+    ports:
+      - "3000:3000"  # Map host port 3000 to container port 3000
+    command: ["node", "server.js"]  # Command to run in the container
+    environment:
+      - NODE_ENV=development  # Set environment variables
+      - MONGO_DB_USERNAME=admin
+      - MONGO_DB_PASSWORD=password
+
+volumes:
+  app_data:
+    # Named volume; no additional configuration required
+    # It will be managed and stored by Docker in `/var/lib/docker/volumes`
+```
