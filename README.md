@@ -210,3 +210,49 @@ services:
 ```
 
 This file sets up two containers `mongodb` and `mongo-express`. They work together, with `mongo-express` configured to connect to the `mongodb` service
+
+#### Dockerfile
+-   A dockerfile is a blueprint for buildiing docker images.
+-   This means every single docker image has its own docker file.
+-   A dockerfile is a simple text file and is usually named as `Dockerfile`. It cannot be named any other way.
+-   Every docker image is based on another image hence the command `FROM` on every docker file.
+-   Below is an example of a `Dockerfile`
+```
+# Use an official Python runtime as the base image
+FROM python:3.11-slim
+
+# Set the working directory inside the container
+WORKDIR /app
+
+# Copy the requirements file to the working directory
+COPY requirements.txt .
+
+# Install Python dependencies
+RUN pip install --no-cache-dir -r requirements.txt
+
+# Copy the application code into the container
+COPY . .
+
+# Expose a port to allow communication with the container
+EXPOSE 8000
+
+# Set the command to run the application
+CMD ["python", "app.py"]
+```
+
+A line by line explanation of the above file:
+1.  **FROM python:3.11-slim:** Specifies the base image to use for the container.
+2.  **WORKDIR /app:** Sets /app as the working directory inside the container. All subsequent commands will be executed relative to this directory.
+3.  **COPY requirements.txt .:** Copies the requirements.txt file from your local machine into the working directory inside the container.
+4.  **RUN pip install --no-cache-dir -r requirements.txt:** Installs the dependencies listed in requirements.txt. The --no-cache-dir flag prevents caching, reducing image size.
+5.  **COPY . .:** Copies the rest of the application code from your local machine into the container.
+6.  **EXPOSE 8000:** Informs Docker that the application listens on port 8000. This doesn't publish the port but serves as documentation.
+7.  **CMD ["python", "app.py"]:** Specifies the default command to run when the container starts. This runs the app.py file using Python.
+
+#### Build docker image from Dockerfile
+Once we have created the Dockerfile, the next step is to build a docker image from it. This can be done using the command below:
+-   `docker build -t <image_name>:<image_tag> <path_to_Dockerfile>` *Example* `docker build -t my-app:1.0 .`
+
+-   Whenever you make any changes to the `Dockerfile`, you need to rebuild the image. Stop the container, delete it (`docker rm <container_id>`), then delete the image (`docker rmi <image_id>`)
+
+#### Docker Volumes
